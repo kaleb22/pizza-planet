@@ -1,22 +1,23 @@
 package br.com.ufabc.pizzaplanet.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Table(name="status")
 public class Status {
 
     @Id
-    private int id_pedido;
+    private int id_status;
 
+    @Column(name="descricao", nullable=false)
     private String descricao;
 
     public int getId_pedido() {
-        return id_pedido;
+        return id_status;
     }
 
-    public void setId_pedido(int id_pedido) {
-        this.id_pedido = id_pedido;
+    public void setId_pedido(int id_status) {
+        this.id_status = id_status;
     }
 
     public String getDescricao() {
