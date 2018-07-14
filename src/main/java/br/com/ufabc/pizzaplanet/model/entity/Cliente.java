@@ -1,19 +1,23 @@
 package br.com.ufabc.pizzaplanet.model.entity;
 
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
+@Table(name="cliente")
 public class Cliente {
 
     @Id
     private String cpf;
 
+    @Column(name="nome", nullable=false)
     private String nome;
+    @Column(name="telefone", nullable=false)
     private String telefone;
+    @Column(name="email", nullable=false)
     private String email;
+    @Column(name="cep", nullable=false)
     private String cep;
+    @Column(name="numero_endereco", nullable=false)
     private int numero_endereco;
 
     public String getCpf() {
