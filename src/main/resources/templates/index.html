@@ -1,12 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Pizza Planet</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Wish shop project">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
+    <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/owl.theme.default.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/animate.css}">
+    <link th:href="@{/css/colorbox.css}" rel="stylesheet" type="text/css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main_styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
 </head>
 <body>
 
-    <p>Index page</p>
+<div class="super_container">
 
+    <!-- Header -->
+
+    <header class="header">
+        <div class="header_inner d-flex flex-row align-items-center justify-content-start">
+            <div class="logo"><a href="#">Pizza Planet</a></div>
+            <nav class="main_nav">
+                <ul>
+                    <li><a th:href="@{/index}">home</a></li>
+                    <li><a href="#">cardápio</a></li>
+                    <li><a th:href="@{/product}">faça seu pedido!</a></li>
+                    <li><a href="#">quem somos</a></li>
+                    <li><a th:href="@{/contact}">contato</a></li>
+                    <li><a href="#">login</a></li>
+                </ul>
+            </nav>
+            <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Menu -->
+
+    <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+        <div class="menu_close_container">
+            <div class="menu_close">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="logo menu_mm"><a href="#">Pizza Planet</a></div>
+        <div class="search">
+            <form action="#">
+                <input type="search" class="search_input menu_mm" required="required">
+                <button type="submit" id="search_button_menu" class="search_button menu_mm">
+                    <img class="menu_mm"  th:href="@{/images/magnifying-glass.svg}" alt=""></button>
+            </form>
+        </div>
+        <nav class="menu_nav">
+            <ul class="menu_mm">
+                <li class="menu_mm"><a href="#">home</a></li>
+                <li><a href="#">cardápio</a></li>
+                <li><a href="#">faça seu pedido!</a></li>
+                <li><a href="#">quem somos</a></li>
+                <li><a href="#">contato</a></li>
+                <li><a href="#">login</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Home -->
+
+    <div class="home">
+
+        <!-- Home Slider -->
+
+        <div class="home_slider_container">
+            <div class="owl-carousel owl-theme home_slider">
+
+                <!-- Home Slider Item -->
+                <div class="owl-item">
+                    <div class="home_slider_background" style="background-image:url(images/pizza_capa1.jpeg)"></div>
+                    <div class="home_slider_content">
+                        <div class="home_slider_content_inner">
+                            <div class="home_slider_subtitle">Pizza Planet</div>
+                            <div class="home_slider_title">A Mais Nova Pizzaria Online</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home Slider Item -->
+                <div class="owl-item">
+                    <div class="home_slider_background" style="background-image:url(images/pizza_capa2.jpeg)"></div>
+                    <div class="home_slider_content">
+                        <div class="home_slider_content_inner">
+                            <div class="home_slider_subtitle">Pizza Planet</div>
+                            <div class="home_slider_title">Praticidade em Primeiro Lugar</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home Slider Item -->
+                <div class="owl-item">
+                    <div class="home_slider_background" style="background-image:url(images/pizza_capa3.jpeg)"></div>
+                    <div class="home_slider_content">
+                        <div class="home_slider_content_inner">
+                            <div class="home_slider_subtitle">Pizza Planet</div>
+                            <div class="home_slider_title">O Sabor de Infância na sua Casa</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+<script th:src="@{/js/popper.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/owl.carousel.js}"></script>
+<script th:src="@{/js/easing.js}"></script>
+<script th:src="@{/js/parallax.min.js}"></script>
+<script th:src="@{/js/jquery.colorbox-min.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
 </body>
 </html>

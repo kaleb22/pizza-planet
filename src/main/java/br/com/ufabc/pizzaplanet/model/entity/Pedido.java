@@ -1,19 +1,29 @@
 package br.com.ufabc.pizzaplanet.model.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.xml.crypto.Data;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name="pedido")
 public class Pedido {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // means that the ID will be generated automatically
     private int id;
+
+    @Column(name="cpf", nullable = false)
     private String cpf;
+
+    @Column(name="data", nullable=false)
     private Date data;
+
+    @Column(name="id_pagamento", nullable=false)
     private int id_pagamento;
+
+    @Column(name="id_produto", nullable=false)
     private int id_produto;
+
+    @Column(name="preco", nullable=false)
     private double preco;
 
     public int getId() {
@@ -59,7 +69,7 @@ public class Pedido {
     public double getPreco() {
         return preco;
     }
-
+    
     public void setPreco(double preco) {
         this.preco = preco;
     }
