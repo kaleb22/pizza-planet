@@ -35,4 +35,9 @@ public class PizzaPlanetController {
     public String categories(){
         return "categories";
     }
+
+    @RequestMapping(value = "/login")
+    public String login(){
+        return "login";
+    }
 }
