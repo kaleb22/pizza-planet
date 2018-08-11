@@ -59,12 +59,19 @@ public class PizzaPlanetController {
                                      @RequestParam String cpf, @RequestParam String senha) {
         ModelAndView mav = null;
 
-        Login userLogin = loginDao.findUserLogin(cpf, senha);
+   //     Login userLogin = loginDao.findUserLogin(cpf, senha);
 
-        if (userLogin != null) {
+        try{
+            Login userLogin = loginDao.getOne(cpf);
+
+            System.out.println(userLogin.getCPF());
+            System.out.println(userLogin.getRole());
+            System.out.println(userLogin.getUsername());
+
             mav = new ModelAndView("index");
             mav.addObject("welcome_username", "Olá, " + userLogin.getUsername());
-        } else {
+
+        } catch (Exception e) {
             mav = new ModelAndView("login");
             mav.addObject("login_failed", "Usuário e/ou senha não encontrados!");
         }
