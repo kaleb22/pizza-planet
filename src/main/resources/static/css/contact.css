@@ -752,7 +752,7 @@ section
 }
 .review_form_content
 {
-	margin-top: 99px;
+	margin-top: 3%;
 	text-align: center;
 }
 .review_form
@@ -771,7 +771,8 @@ section
 	border: solid 1px #b5b5b5;
 	outline: none;
 	padding-left: 22px;
-	margin: auto;
+    margin-left: 35%;
+    margin-top: 2%;
 }
 .review_form_text
 {
