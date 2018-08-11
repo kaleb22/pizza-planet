@@ -27,3 +27,4 @@
 /.nb-gradle/
 
 ./application.properties
+application.properties
