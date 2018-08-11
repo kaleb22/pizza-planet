@@ -8,17 +8,12 @@ public class Cliente {
 
     @Id
     private String cpf;
-
-    @Column(name="nome", nullable=false)
     private String nome;
-    @Column(name="telefone", nullable=false)
     private String telefone;
-    @Column(name="email", nullable=false)
-    private String email;
-    @Column(name="cep", nullable=false)
     private String cep;
-    @Column(name="numero_endereco", nullable=false)
     private int numero_endereco;
+    private String endereco;
+    private String bairro;
 
     public String getCpf() {
         return cpf;
@@ -42,14 +37,6 @@ public class Cliente {
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getCep() {

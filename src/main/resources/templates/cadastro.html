@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Contact</title>
+    <title>Cadastro</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Wish shop project">
@@ -22,52 +22,13 @@
             <div class="logo"><a href="#">Wish</a></div>
             <nav class="main_nav">
                 <ul>
-                    <li><a href="index.html">home</a></li>
+                    <li><a href="/index">home</a></li>
                     <li><a href="categories.html">clothes</a></li>
                     <li><a href="categories.html">accessories</a></li>
                     <li><a href="categories.html">lingerie</a></li>
-                    <li><a href="contact.html">contact</a></li>
+                    <li><a href="/cadastro">cadastro</a></li>
                 </ul>
             </nav>
-            <div class="header_content ml-auto">
-                <div class="search header_search">
-                    <form action="#">
-                        <input type="search" class="search_input" required="required">
-                        <button type="submit" id="search_button" class="search_button"><img
-                                src="images/magnifying-glass.svg" alt=""></button>
-                    </form>
-                </div>
-                <div class="shopping">
-                    <!-- Cart -->
-                    <a href="#">
-                        <div class="cart">
-                            <img src="images/shopping-bag.svg" alt="">
-                            <div class="cart_num_container">
-                                <div class="cart_num_inner">
-                                    <div class="cart_num">1</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- Star -->
-                    <a href="#">
-                        <div class="star">
-                            <img src="images/star.svg" alt="">
-                            <div class="star_num_container">
-                                <div class="star_num_inner">
-                                    <div class="star_num">0</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <!-- Avatar -->
-                    <a href="#">
-                        <div class="avatar">
-                            <img src="images/avatar.svg" alt="">
-                        </div>
-                    </a>
-                </div>
-            </div>
 
             <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
                 <div></div>
@@ -97,11 +58,11 @@
         </div>
         <nav class="menu_nav">
             <ul class="menu_mm">
-                <li class="menu_mm"><a href="index.html">home</a></li>
+                <li class="menu_mm"><a href="/index">home</a></li>
                 <li class="menu_mm"><a href="#">clothes</a></li>
                 <li class="menu_mm"><a href="#">accessories</a></li>
                 <li class="menu_mm"><a href="#">lingerie</a></li>
-                <li class="menu_mm"><a href="#">contact</a></li>
+                <li class="menu_mm"><a href="/cadastro">cadastro</a></li>
             </ul>
         </nav>
     </div>
@@ -116,11 +77,11 @@
                 <div class="col">
                     <div class="home_container">
                         <div class="home_content">
-                            <div class="home_title">Contact</div>
+                            <div class="home_title">Cadastro</div>
                             <div class="breadcrumbs">
                                 <ul>
-                                    <li><a href="index.html">Home</a></li>
-                                    <li>Contact</li>
+                                    <li><a href="/index">Home</a></li>
+                                    <li>Cadastro</li>
                                 </ul>
                             </div>
                         </div>
@@ -141,10 +102,13 @@
                         <div class="review_form_content">
                             <form action="#" id="review_form" class="review_form">
                                 <div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
-                                    <input type="text" class="review_form_input" placeholder="Nome" required="required">
-                                    <input type="email" class="review_form_input" placeholder="E-mail"
-                                           required="required">
-                                    <input type="text" class="review_form_input" placeholder="Subject">
+                                    <input type="text" class="review_form_input" placeholder="Nome" name="nome" required="required">
+                                    <input type="text" class="review_form_input" placeholder="CPF" name="cpf" required="required">
+                                    <input type="text" class="review_form_input" placeholder="Cep" name="cep" required="required">
+                                    <input type="text" class="review_form_input" placeholder="Endereco" name="endereco">
+                                    <input type="text" class="review_form_input" placeholder="Numero" name="numero_endereco" required="required">
+                                    <input type="text" class="review_form_input" placeholder="Bairro" name="bairro">
+                                    <input type="text" class="review_form_input" placeholder="Telefone" name="telefone" required="required">
                                 </div>
                                 <button type="submit" class="review_form_button">cadastrar</button>
                             </form>
@@ -168,7 +132,7 @@
                             <li><a href="categories.html">clothes</a></li>
                             <li><a href="categories.html">accessories</a></li>
                             <li><a href="categories.html">lingerie</a></li>
-                            <li><a href="contact.html">contact</a></li>
+                            <li><a href="cadastro.html">Cadastro</a></li>
                         </ul>
                     </nav>
                     <div class="footer_social">
