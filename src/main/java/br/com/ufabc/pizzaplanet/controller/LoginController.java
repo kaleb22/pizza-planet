@@ -1,16 +1,17 @@
 package br.com.ufabc.pizzaplanet.controller;
 
-import br.com.ufabc.pizzaplanet.model.dao.LoginDao;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
 import br.com.ufabc.pizzaplanet.model.entity.Login;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import br.com.ufabc.pizzaplanet.model.dao.LoginDao;
+import java.util.Base64;
 
+@Controller
 public class LoginController {
 
     @Autowired
@@ -22,11 +23,9 @@ public class LoginController {
         ModelAndView mav = null;
 
         try {
-            Login userLogin = loginDao.getOne(cpf);
+            String senha64 = Base64.getEncoder().encodeToString(senha.getBytes());
 
-            System.out.println(userLogin.getCPF());
-            System.out.println(userLogin.getRole());
-            System.out.println(userLogin.getUsername());
+            Login userLogin = loginDao.findbyCpfAndPassword(cpf, senha64.toString());
 
             mav = new ModelAndView("index");
             mav.addObject("welcome_username", "Olá, " + userLogin.getUsername());
