@@ -26,10 +26,8 @@ public class LoginController {
 
             System.out.println(userLogin.getCPF());
             System.out.println(userLogin.getRole());
-            System.out.println(userLogin.getUsername());
 
             mav = new ModelAndView("index");
-            mav.addObject("welcome_username", "Olá, " + userLogin.getUsername());
 
         } catch (Exception e) {
             mav = new ModelAndView("login");

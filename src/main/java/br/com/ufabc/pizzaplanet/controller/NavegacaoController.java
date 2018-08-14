@@ -21,9 +21,9 @@ public class NavegacaoController {
         return "index";
     }
 
-    @RequestMapping(value = "/contact")
+    @RequestMapping(value = "/cadastro")
     public String contact(){
-        return "contact";
+        return "cadastro";
     }
 
     @RequestMapping(value = "/cart")

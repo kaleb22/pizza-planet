@@ -6,19 +6,36 @@ import javax.persistence.*;
 @Table(name="cliente")
 public class Cliente {
 
+    public Cliente(){}
+
+    public Cliente(String cpf){
+        this.cpf = cpf;
+    }
+
     @Id
     private String cpf;
-
-    @Column(name="nome", nullable=false)
     private String nome;
-    @Column(name="telefone", nullable=false)
     private String telefone;
-    @Column(name="email", nullable=false)
-    private String email;
-    @Column(name="cep", nullable=false)
     private String cep;
-    @Column(name="numero_endereco", nullable=false)
-    private int numero_endereco;
+    private int numero;
+    private String endereco;
+    private String bairro;
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
 
     public String getCpf() {
         return cpf;
@@ -44,14 +61,6 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getCep() {
         return cep;
     }
@@ -60,11 +69,11 @@ public class Cliente {
         this.cep = cep;
     }
 
-    public int getNumero_endereco() {
-        return numero_endereco;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setNumero_endereco(int numero_endereco) {
-        this.numero_endereco = numero_endereco;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }
