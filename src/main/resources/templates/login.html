@@ -112,8 +112,7 @@
                                             <p class="text-center">Não tem uma conta? <a th:href="@{/cadastro}" id="signup">Cadastre-se aqui!</a></p>
                                         </div>
                                     </form>
-                                        <p style="font-style: italic; color: red; text-align: center;" th:text="${login_failed}"></p>
-
+                                    <p style="font-style: italic; color: red; text-align: center;" th:text="${login_failed}"></p>
                                 </div>
                             </div>
                         </div>
@@ -131,6 +130,13 @@
     <script th:src="@{/js/parallax.min.js}"></script>
     <script th:src="@{/js/jquery.colorbox-min.js}"></script>
     <script th:src="@{/js/custom.js}"></script>
+    <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+
+    <script>
+        $('#cpf').inputmask({
+            mask: '999-999-999-99'
+        })
+    </script>
 
 </body>
 </html>
