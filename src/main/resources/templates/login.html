@@ -109,7 +109,7 @@
                                             <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm hand">Login</button>
                                         </div>
                                         <div class="form-group">
-                                            <p class="text-center">Não tem uma conta? <a href="#" id="signup">Cadastre-se aqui!</a></p>
+                                            <p class="text-center">Não tem uma conta? <a th:href="@{/cadastro}" id="signup">Cadastre-se aqui!</a></p>
                                         </div>
                                     </form>
                                         <p style="font-style: italic; color: red; text-align: center;" th:text="${login_failed}"></p>
