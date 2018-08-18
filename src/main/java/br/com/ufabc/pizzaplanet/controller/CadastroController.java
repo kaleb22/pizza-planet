@@ -1,9 +1,11 @@
 package br.com.ufabc.pizzaplanet.controller;
 
 import br.com.ufabc.pizzaplanet.model.dao.CadastroDao;
+import br.com.ufabc.pizzaplanet.model.dao.CadastroProdutoDao;
 import br.com.ufabc.pizzaplanet.model.dao.LoginDao;
 import br.com.ufabc.pizzaplanet.model.entity.Cliente;
 import br.com.ufabc.pizzaplanet.model.entity.Login;
+import br.com.ufabc.pizzaplanet.model.entity.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,9 @@ public class CadastroController {
 
     @Autowired
     private CadastroDao cadastroDao;
+
+    @Autowired
+    private CadastroProdutoDao cadastroProdutoDao;
 
     @Autowired
     private LoginDao loginDao;
@@ -49,6 +54,22 @@ public class CadastroController {
         loginDao.save(login);
 
         ModelAndView mav = new ModelAndView("login");
+
+        return mav;
+    }
+
+    @RequestMapping(value = "/cadastrarProduto", method = RequestMethod.POST)
+    public ModelAndView cadastrarProduto(@RequestParam String tamanho, String descricao, double valor){
+
+        Produto produto = new Produto();
+        produto.setTamanho(tamanho);
+        produto.setDescricao(descricao);
+        produto.setValor(valor);
+
+        // salvando cliente
+        cadastroProdutoDao.save(produto);
+
+        ModelAndView mav = new ModelAndView("index");
 
         return mav;
     }
