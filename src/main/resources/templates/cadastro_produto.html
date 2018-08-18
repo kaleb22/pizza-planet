@@ -106,10 +106,12 @@
                                         <div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
                                             <input type="text" class="review_form_input" placeholder="Tamanho" name="tamanho" required="required">
                                             <input type="text" class="review_form_input" placeholder="Descricao" name="descricao" required="required">
-                                            <input type="text" class="review_form_input" placeholder="Valor" id="valor" name="valor" required="required">
+                                            <input type="text" data-prefix="R$ " class="review_form_input dinheiro" placeholder="Valor" id="valor" name="valor" required="required">
                                         </div>
                                         <button type="submit" class="review_form_button">cadastrar</button>
                                     </form>
+                                    <p style="font-style: italic; color: green; text-align: center;" th:text="${sucesso}"></p>
+                                    <p style="font-style: italic; color: green; text-align: center;" th:text="${falha}"></p>
                                 </div>
                             </div>
                         </div>
@@ -132,14 +134,14 @@
     <script th:src="@{/js/parallax.min.js}"></script>
     <script th:src="@{/js/jquery.colorbox-min.js}"></script>
     <script th:src="@{/js/custom.js}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-maskmoney/3.0.2/jquery.maskMoney.min.js" ></script>
 
 
 </body>
 
-<script>
-    $('#valor').inputmask({
-        mask: 'R$ 999999999999,99'
-    })
+<script type="text/javascript">
+
 </script>
+
 
 </html>

@@ -60,17 +60,23 @@ public class CadastroController {
 
     @RequestMapping(value = "/cadastrarProduto", method = RequestMethod.POST)
     public ModelAndView cadastrarProduto(@RequestParam String tamanho, String descricao, double valor){
+        ModelAndView mav = new ModelAndView("cadastro_produto");
+        try {
 
-        Produto produto = new Produto();
-        produto.setTamanho(tamanho);
-        produto.setDescricao(descricao);
-        produto.setValor(valor);
+            Produto produto = new Produto();
+            produto.setTamanho(tamanho);
+            produto.setDescricao(descricao);
+            produto.setValor(valor);
 
-        // salvando cliente
-        cadastroProdutoDao.save(produto);
+            // salvando cliente
+            cadastroProdutoDao.save(produto);
 
-        ModelAndView mav = new ModelAndView("index");
 
+            mav.addObject("sucesso", "Produto cadastrado com sucesso!");
+        }catch (Exception e) {
+
+            mav.addObject("falha", "Erro ao cadastrar produto!");
+        }
         return mav;
     }
 }
