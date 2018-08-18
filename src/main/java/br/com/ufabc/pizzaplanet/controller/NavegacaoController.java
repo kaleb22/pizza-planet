@@ -53,4 +53,9 @@ public class NavegacaoController {
     public String login() {
         return "login";
     }
+
+    @RequestMapping(value = "/cadastro_produto")
+    public String productRegistration(){
+        return "cadastro_produto";
+    }
 }

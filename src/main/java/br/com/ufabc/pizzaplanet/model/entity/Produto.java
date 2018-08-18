@@ -19,6 +19,17 @@ public class Produto {
     @Column(name="valor", nullable=false)
     private double valor;
 
+    @Column(name="imagem", nullable=true)
+    private byte[] imagem;
+
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
+
     public int getId() {
         return id;
     }
