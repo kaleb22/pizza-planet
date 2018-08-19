@@ -1,0 +1,33 @@
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    margin: auto;
+}
+
+td,
+th {
+    text-align: left;
+    padding: 8px;
+}
+
+.qtdField {
+    width: 40%;
+    padding-left: 10px;
+}
+
+.coluna300 {
+    width: 300px;
+}
+
+.coluna200 {
+    width: 200px;
+}
+
+.coluna100 {
+    width: 100px;
+}
+
+.btnPizzas {
+    width: 20px;
+    margin-left: 10px;
+}
