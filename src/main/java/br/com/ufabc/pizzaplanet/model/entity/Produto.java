@@ -10,8 +10,8 @@ public class Produto {
     @GeneratedValue(strategy = GenerationType.IDENTITY) // means that the ID will be generated automatically
     private int id;
 
-    @Column(name="tamanho", nullable=false)
-    private String tamanho;
+    @Column(name="nome", nullable=false)
+    private String nome;
 
     @Column(name="descricao", nullable=false)
     private String descricao;
@@ -39,11 +39,11 @@ public class Produto {
     }
 
     public String getTamanho() {
-        return tamanho;
+        return nome;
     }
 
     public void setTamanho(String tamanho) {
-        this.tamanho = tamanho;
+        this.nome = tamanho;
     }
 
     public String getDescricao() {
