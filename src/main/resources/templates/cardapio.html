@@ -27,8 +27,8 @@
 		}
 
 		.qtdField {
-			width: 5%;
-    		padding-left: 5px;
+			width: 40%;
+    		padding-left: 10px;
 		}
 
         .coluna300 {
@@ -337,6 +337,56 @@
 
 <script>
 
+    pizza = new Object();
+	var nome;
+	var id;
+	var qtd;
+
+	function Pizza(nome, id, qtd){
+		this.nome = nome;
+		this.id = id;
+		this.qtd = qtd;
+    }
+    
+    var arrayPedidos = [];
+
+    $(document).on('click','.add',function(e) {
+    //handler code here
+        var pizzaNome = $(this).prev('input').attr('name');
+        var pizzaId = $(this).prev('input').attr('id');
+        var pizzaIdBanco = $(this).prev('input').attr('data-id');
+        var pizzaQtd = 1;
+        var pizza1 = new Pizza(pizzaNome, pizzaIdBanco, pizzaQtd);
+		arrayPedidos.push(pizza1);
+        $('#'+pizzaId).val( function(i, oldval){
+            if(oldval >= 9){
+                alert("O número máximo de pizzas por sabor, é 9!");
+                return 9;
+            } else {
+                return parseInt(oldval, 10) + 1;
+            }
+        });
+    });
+
+	$(document).on('click','.sub',function(e) {
+		var $pizzaNome = $(this).parent().find('input');
+		var pizzaId = $pizzaNome.attr('id');
+		var pizzaNome = $pizzaNome.attr('name');
+		console.log(arrayPedidos);
+		$('#'+pizzaId).val( function(i, oldval){
+			if(oldval == 0){
+				return 0;
+			} else {
+				var index = arrayPedidos.indexOf(pizzaNome);
+				if( index > -1) {
+					array.splice(index, 1);
+				}
+				return parseInt(oldval, 10) - 1;
+			}
+		}); 
+		console.log(arrayPedidos);
+	}); 
+
     function criaTabelaPizzas(){
         var text = '{ "pizzas" : [' +
         '{ "nome":"namorados" , "descricao":"mussarela, tomate, cebola", "valor":"23.50" },' +
@@ -377,7 +427,7 @@
                 linha += '<td class="coluna300">' + objPizzas.pizzas[indice].nome + '</td>';
                 linha += '<td class="coluna200">' + objPizzas.pizzas[indice].descricao + '</td>';
                 linha += '<td class="coluna100">' + objPizzas.pizzas[indice].valor + '</td>';
-                linha += '<td class="coluna100"><input id="pizza-namorado1" type="text" value="0" class="qtdField" name="namorado" data-id="1"><button id="addPizza" class="add" type="button">+</button><button id="subPizza" class="sub" type="button">-</button></td>'
+                linha += '<td class="coluna100"><input id="pizza'+num+'" type="text" value="0" class="qtdField" name="'+objPizzas.pizzas[indice].nome+'" data-id="1"><button id="addPizza'+num+'" class="add" type="button">+</button><button id="subPizza'+num+'" class="sub" type="button">-</button></td>'
                 linha += '</tr>';
             tabela += linha;
             tabela += '</table>';
