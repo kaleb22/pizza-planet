@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
     <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/contact.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cadastro.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/contact_responsive.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/owl.carousel.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/owl.theme.default.css}">
@@ -33,7 +34,7 @@
                         <li><a href="#">cardápio</a></li>
                         <li><a href="#">quem somos</a></li>
                         <li><a th:href="@{/login}">login</a></li>
-                        <li><p th:text="${welcome_username}"></li>
+                        <li><p th:text="${session.welcome_username}"></li>
                     </ul>
                 </nav>
                 <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
@@ -67,6 +68,7 @@
                     <li><a href="#">cardápio</a></li>
                     <li><a href="#">quem somos</a></li>
                     <li><a th:href="@{/login}">login</a></li>
+                    <li><p th:text="${session.welcome_username}"></li></li>
                 </ul>
             </nav>
         </div>
@@ -104,14 +106,45 @@
                                 <div class="review_form_content">
                                     <form action="/cadastrarProduto" id="review_form" class="review_form"  method="post">
                                         <div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
-                                            <input type="text" class="review_form_input" placeholder="Tamanho" name="tamanho" required="required">
-                                            <input type="text" class="review_form_input" placeholder="Descricao" name="descricao" required="required">
+                                            <input type="text" class="review_form_input" placeholder="Nome" name="nome" required="required">
+                                            <div class="div_checkbox">
+                                                <h4>Escolha os ingredientes</h4>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="options[]" value="Tomate">
+                                                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                                        Tomate
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="options[]" value="Mussarela">
+                                                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                                        Mussarela
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="options[]" value="Bacon">
+                                                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                                        Bacon
+                                                    </label>
+                                                </div>
+                                                <div class="checkbox">
+                                                    <label>
+                                                        <input type="checkbox" name="options[]" value="Lombo">
+                                                        <span class="cr"><i class="cr-icon glyphicon glyphicon-ok"></i></span>
+                                                        Lombo
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <input type="hidden" class="review_form_input" placeholder="Descricao" name="descricao" id="descricao" required="required">
                                             <input type="text" data-prefix="R$ " class="review_form_input dinheiro" placeholder="Valor" id="valor" name="valor" required="required">
                                         </div>
-                                        <button type="submit" class="review_form_button">cadastrar</button>
+                                        <button id="myBtn" class="review_form_button">cadastrar</button>
                                     </form>
                                     <p style="font-style: italic; color: green; text-align: center;" th:text="${sucesso}"></p>
-                                    <p style="font-style: italic; color: green; text-align: center;" th:text="${falha}"></p>
+                                    <p style="font-style: italic; color: red; text-align: center;" th:text="${falha}"></p>
                                 </div>
                             </div>
                         </div>
@@ -139,7 +172,38 @@
 
 </body>
 
-<script type="text/javascript">
+<script>
+
+$(document).ready(function(){
+      $("input.dinheiro").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
+});
+
+
+document.getElementById("myBtn").addEventListener("click", getElementsFromCheckbox);
+
+function getElementsFromCheckbox() {
+
+
+    var num = $('#valor').maskMoney('unmasked')[0];
+    $('#valor').val(num);
+
+    calculate();
+
+    document.getElementById("review_form").submit();
+}
+
+function calculate() {
+
+    var checked = []
+    $("input[name='options[]']:checked").each(function ()
+    {
+        checked.push($(this).val());
+    });
+
+    $('#descricao').val(checked);
+}
+
+
 
 </script>
 

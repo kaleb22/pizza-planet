@@ -38,11 +38,11 @@ public class Produto {
         this.id = id;
     }
 
-    public String getTamanho() {
+    public String getNome() {
         return nome;
     }
 
-    public void setTamanho(String tamanho) {
+    public void setNome(String tamanho) {
         this.nome = tamanho;
     }
 

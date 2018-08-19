@@ -59,12 +59,12 @@ public class CadastroController {
     }
 
     @RequestMapping(value = "/cadastrarProduto", method = RequestMethod.POST)
-    public ModelAndView cadastrarProduto(@RequestParam String tamanho, String descricao, double valor){
+    public ModelAndView cadastrarProduto(@RequestParam String nome, String descricao, double valor){
         ModelAndView mav = new ModelAndView("cadastro_produto");
         try {
 
             Produto produto = new Produto();
-            produto.setTamanho(tamanho);
+            produto.setNome(nome);
             produto.setDescricao(descricao);
             produto.setValor(valor);
 

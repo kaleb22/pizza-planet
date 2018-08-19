@@ -39,6 +39,7 @@ public class LoginController {
             mav = new ModelAndView("index");
 
             session.setAttribute("welcome_username", "Olá, " + userInfo.getNome());
+            session.setAttribute("role",  userLogin.getRole());
         } catch (Exception e) {
             mav = new ModelAndView("login");
             mav.addObject("login_failed", "Usuário e/ou senha não encontrados!");
