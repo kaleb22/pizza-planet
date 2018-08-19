@@ -12,37 +12,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/categories.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/categories_responsive.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/cardapio.css}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <style>
-		table {
-			font-family: arial, sans-serif;
-			border-collapse: collapse;
-			margin: auto;
-		}
-
-		td,
-		th {
-			text-align: left;
-			padding: 8px;
-		}
-
-		.qtdField {
-			width: 40%;
-    		padding-left: 10px;
-		}
-
-        .coluna300 {
-            width: 300px;
-        }
-
-        .coluna200 {
-            width: 200px;
-        }
-
-        .coluna100 {
-            width: 100px;
-        }
-	</style>
 
 </head>
 <body>
@@ -334,7 +305,6 @@
 
                 </div>
             </div>
-
 <script>
 
     pizza = new Object();
@@ -399,14 +369,14 @@
             tabelaHeader += '<th class="coluna300">Pizza</th>';
             tabelaHeader += '<th class="coluna200">Descricao</th>';
             tabelaHeader += '<th class="coluna100">Valor</th>';
-            tabelaHeader += '<th class="coluna100">Quantidade</th>';
+            tabelaHeader += '<th class="coluna200">Quantidade</th>';
             tabelaHeader += '</tr>';
             tabelaHeader += '</thead>';
             tabelaHeader += '</table>';
 
         $('#product-grid').append(tabelaHeader);
 
-        var rating = '<div class="rating rating_4" data-rating="4">';
+        var rating = '<div class="rating rating_5" data-rating="5">';
             rating += '<i class="fa fa-star"></i>';
             rating += '<i class="fa fa-star"></i>';
             rating += '<i class="fa fa-star"></i>';
@@ -427,7 +397,7 @@
                 linha += '<td class="coluna300">' + objPizzas.pizzas[indice].nome + '</td>';
                 linha += '<td class="coluna200">' + objPizzas.pizzas[indice].descricao + '</td>';
                 linha += '<td class="coluna100">' + objPizzas.pizzas[indice].valor + '</td>';
-                linha += '<td class="coluna100"><input id="pizza'+num+'" type="text" value="0" class="qtdField" name="'+objPizzas.pizzas[indice].nome+'" data-id="1"><button id="addPizza'+num+'" class="add" type="button">+</button><button id="subPizza'+num+'" class="sub" type="button">-</button></td>'
+                linha += '<td class="coluna200"><input id="pizza'+num+'" type="text" value="0" class="qtdField" name="'+objPizzas.pizzas[indice].nome+'" data-id="1"><button id="addPizza'+num+'" class="add btnPizzas" type="button">+</button><button id="subPizza'+num+'" class="sub btnPizzas" type="button">-</button></td>'
                 linha += '</tr>';
             tabela += linha;
             tabela += '</table>';
@@ -441,10 +411,7 @@
     });
 
 </script>
-
-
             <!-- Newsletter -->
-
             <div class="newsletter">
                 <div class="newsletter_content">
                     <div class="newsletter_image" style="background-image:url(images/newsletter.jpg)"></div>
