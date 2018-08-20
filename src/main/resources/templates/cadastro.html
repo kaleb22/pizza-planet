@@ -20,102 +20,118 @@
 </head>
 <body>
 
-    <div class="super_container">
+<div class="super_container">
 
-        <!-- Header -->
+    <!-- Header -->
 
-        <header class="header">
-            <div class="header_inner d-flex flex-row align-items-center justify-content-start">
-                <div class="logo"><a href="#">Pizza Planet</a></div>
-                <nav class="main_nav">
-                    <ul>
-                        <li><a th:href="@{/index}">home</a></li>
-                        <li><a href="#">cardápio</a></li>
-                        <li><a href="#">quem somos</a></li>
-                        <li><a th:href="@{/login}">login</a></li>
-                        <li><p th:text="${session.welcome_username}"></li>
-                    </ul>
-                </nav>
-                <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-        </header>
-
-        <!-- Menu -->
-
-        <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
-            <div class="menu_close_container">
-                <div class="menu_close">
-                    <div></div>
-                    <div></div>
-                </div>
-            </div>
-            <div class="logo menu_mm"><a href="#">Pizza Planet</a></div>
-            <div class="search">
-                <form action="#">
-                    <input type="search" class="search_input menu_mm" required="required">
-                    <button type="submit" id="search_button_menu" class="search_button menu_mm">
-                        <img class="menu_mm"  th:href="@{/images/magnifying-glass.svg}" alt=""></button>
-                </form>
-            </div>
-            <nav class="menu_nav">
-                <ul class="menu_mm">
+    <header class="header">
+        <div class="header_inner d-flex flex-row align-items-center justify-content-start">
+            <div class="logo"><a href="#">Pizza Planet</a></div>
+            <nav class="main_nav">
+                <ul>
                     <li><a th:href="@{/index}">home</a></li>
-                    <li><a href="#">cardápio</a></li>
-                    <li><a href="#">quem somos</a></li>
-                    <li><a th:href="@{/login}">login</a></li>
+                    <li><a th:href="@{/index}">quem somos</a></li>
+                    <li><a th:href="@{/cardapio}">cardápio</a></li>
+                    <li id="cadastroPizza" style="display: none;"><a th:href="@{/cadastro_produto}">cadastrar pizza</a></li>
+                    <li id="login"><a th:href="@{/login}">login</a></li>
+                    <li>
+                        <p th:text="${session.welcome_username}">
+                    </li>
+                    <li id="sairLink" style="display: none;">
+                        <form action="/logof" method="post" name="logof">
+                            <button class="sair" type="submit">Sair</button>
+                        </form>
+                    </li>
+                    <input id="user" type="hidden" th:value="${session.welcome_username}">
+                    <input id="role" type="hidden" th:value="${session.role}">
                 </ul>
             </nav>
+            <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
         </div>
+    </header>
 
-        <!-- Home -->
+    <!-- Menu -->
 
-        <div class="home">
-            <div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/contact.jpg"
-                 data-speed="0.8"></div>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
-                        <div class="home_container">
-                            <div class="home_content">
-                                <div class="home_title">Cadastro</div>
-                                <div class="breadcrumbs">
-                                    <ul>
-                                        <li><a href="/index">Home</a></li>
-                                        <li>Cadastro</li>
-                                    </ul>
-                                </div>
+    <div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
+        <div class="menu_close_container">
+            <div class="menu_close">
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+        <div class="logo menu_mm"><a href="#">Pizza Planet</a></div>
+        <div class="search">
+            <form action="#">
+                <input type="search" class="search_input menu_mm" required="required">
+                <button type="submit" id="search_button_menu" class="search_button menu_mm">
+                    <img class="menu_mm"  th:href="@{/images/magnifying-glass.svg}" alt=""></button>
+            </form>
+        </div>
+        <nav class="menu_nav">
+            <ul class="menu_mm">
+                <li><a th:href="@{/index}">home</a></li>
+                <li><a th:href="@{/index}">quem somos</a></li>
+                <li><a th:href="@{/cardapio}">cardápio</a></li>
+                <li id="cadastroPizzaB" style="display: none;"><a th:href="@{/cadastro_produto}">cadastrar pizza</a></li>
+                <li id="loginB"><a th:href="@{/login}">login</a></li>
+                <li><p th:text="${session.welcome_username}"></li>
+                <li id="sairLinkB" style="display: none;">
+                    <form action="/logof" method="post" name="logof">
+                        <button class="sair" type="submit">Sair</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Home -->
+
+    <div class="home">
+        <div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/contact.jpg"
+             data-speed="0.8"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_container">
+                        <div class="home_content">
+                            <div class="home_title">Cadastro</div>
+                            <div class="breadcrumbs">
+                                <ul>
+                                    <li><a href="/index">Home</a></li>
+                                    <li>Cadastro</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- Contact Form -->
+        </div>
+        <!-- Contact Form -->
 
-            <div class="contact">
-                <div class="container">
-                    <div class="row">
-                        <div class="col">
-                            <div class="review_form_container">
-                                <div class="review_form_title">CADASTRE-SE</div>
-                                <div class="review_form_content">
-                                    <form action="/cadastrarCliente" id="review_form" class="review_form"  method="post">
-                                        <div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
-                                            <input type="text" class="review_form_input" placeholder="Nome" name="nome" required="required">
-                                            <input type="text" class="review_form_input" placeholder="CPF" id="cpf" name="cpf" required="required">
-                                            <input type="password" class="review_form_input" placeholder="Senha" name="senha" required="required">
-                                            <input type="text" class="review_form_input" placeholder="Cep" id="cep" name="cep" required="required">
-                                            <input type="text" class="review_form_input" placeholder="Endereco" name="endereco">
-                                            <input type="number" class="review_form_input" placeholder="Numero" name="numero" required="required">
-                                            <input type="text" class="review_form_input" placeholder="Bairro" name="bairro">
-                                            <input type="text" class="review_form_input" placeholder="Telefone" id="telefone" name="telefone" required="required">
-                                        </div>
-                                        <button type="submit" class="review_form_button">cadastrar</button>
-                                    </form>
-                                </div>
+        <div class="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="review_form_container">
+                            <div class="review_form_title">CADASTRE-SE</div>
+                            <div class="review_form_content">
+                                <form action="/cadastrarCliente" id="review_form" class="review_form"  method="post">
+                                    <div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
+                                        <input type="text" class="review_form_input" placeholder="Nome" name="nome" required="required">
+                                        <input type="text" class="review_form_input" placeholder="CPF" id="cpf" name="cpf" required="required">
+                                        <input type="password" class="review_form_input" placeholder="Senha" name="senha" required="required">
+                                        <input type="text" class="review_form_input" placeholder="Cep" id="cep" name="cep" required="required">
+                                        <input type="text" class="review_form_input" placeholder="Endereco" name="endereco">
+                                        <input type="number" class="review_form_input" placeholder="Numero" name="numero" required="required">
+                                        <input type="text" class="review_form_input" placeholder="Bairro" name="bairro">
+                                        <input type="text" class="review_form_input" placeholder="Telefone" id="telefone" name="telefone" required="required">
+                                    </div>
+                                    <button type="submit" class="review_form_button">cadastrar</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -123,20 +139,21 @@
             </div>
         </div>
     </div>
+</div>
 
-    <script th:href="@{/js/jquery-3.2.1.min.js}"></script>
-    <script th:href="@{/js/popper.js}"></script>
-    <script th:href="@{/js/bootstrap.min.js}"></script>
-    <script th:href="@{/js/easing.js}"></script>
-    <script th:href="@{/js/parallax.min.js}"></script>
-    <script th:href="@{/js/contact_custom.js}"></script>
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-    <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
-    <script th:src="@{/js/owl.carousel.js}"></script>
-    <script th:src="@{/js/parallax.min.js}"></script>
-    <script th:src="@{/js/jquery.colorbox-min.js}"></script>
-    <script th:src="@{/js/custom.js}"></script>
+<script th:href="@{/js/jquery-3.2.1.min.js}"></script>
+<script th:href="@{/js/popper.js}"></script>
+<script th:href="@{/js/bootstrap.min.js}"></script>
+<script th:href="@{/js/easing.js}"></script>
+<script th:href="@{/js/parallax.min.js}"></script>
+<script th:href="@{/js/contact_custom.js}"></script>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+<script th:src="@{/js/owl.carousel.js}"></script>
+<script th:src="@{/js/parallax.min.js}"></script>
+<script th:src="@{/js/jquery.colorbox-min.js}"></script>
+<script th:src="@{/js/custom.js}"></script>
 
 
 </body>
@@ -153,6 +170,21 @@
      $('#cep').inputmask({
         mask: '99999-999'
     })
+
+   $(document).ready(function(){
+        var user = $('#user').val();
+        var role = $('#role').val();
+        if(user != ""){
+            $('#login').css("display", "none");
+            $('#loginB').css("display", "none");
+            if(role == 0){
+                $('#cadastroPizza').css("display", "inline-block");
+                $('#cadastroPizzaB').css("display", "inline-block");
+                $('#sairLink').css("display", "inline-block");
+                $('#sairLinkB').css("display", "inline-block");
+            }
+        }
+    });
 </script>
 
 </html>

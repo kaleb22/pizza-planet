@@ -13,6 +13,8 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/categories.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/categories_responsive.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/cardapio.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/main_styles.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/responsive.css}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 </head>
@@ -24,31 +26,26 @@
 
     <header class="header">
         <div class="header_inner d-flex flex-row align-items-center justify-content-start">
-            <div class="logo"><a th:href="@{/index}"}>Pizza Planet</a></div>
+            <div class="logo"><a href="#">Pizza Planet</a></div>
             <nav class="main_nav">
                 <ul>
                     <li><a th:href="@{/index}">home</a></li>
-                    <li><a th:href="@{/cardapio}">cardápio</a></li>
                     <li><a th:href="@{/index}">quem somos</a></li>
-                    <li><a th:href="@{/login}">login</a></li>
+                    <li><a th:href="@{/cardapio}">cardápio</a></li>
+                    <li id="cadastroPizza" style="display: none;"><a th:href="@{/cadastro_produto}">cadastrar pizza</a></li>
+                    <li id="login"><a th:href="@{/login}">login</a></li>
+                    <li>
+                        <p th:text="${session.welcome_username}">
+                    </li>
+                    <li id="sairLink" style="display: none;">
+                        <form action="/logof" method="post" name="logof">
+                            <button class="sair" type="submit">Sair</button>
+                        </form>
+                    </li>
+                    <input id="user" type="hidden" th:value="${session.welcome_username}">
+                    <input id="role" type="hidden" th:value="${session.role}">
                 </ul>
             </nav>
-            <div class="header_content ml-auto">
-                <div class="shopping">
-                    <!-- Cart -->
-                    <a href="#">
-                        <div class="cart">
-                            <img th:src="@{/images/shopping-bag.svg}" alt="">
-                            <div class="cart_num_container">
-                                <div class="cart_num_inner">
-                                    <div class="cart_num">1</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-
             <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
                 <div></div>
                 <div></div>
@@ -66,22 +63,27 @@
                 <div></div>
             </div>
         </div>
-        <div class="logo menu_mm"><a href="#">Wish</a></div>
+        <div class="logo menu_mm"><a href="#">Pizza Planet</a></div>
         <div class="search">
             <form action="#">
                 <input type="search" class="search_input menu_mm" required="required">
-                <button type="submit" id="search_button_menu" class="search_button menu_mm"><img class="menu_mm"
-                                                                                                 th:href="@{/images/magnifying-glass.svg}"
-                                                                                                 alt=""></button>
+                <button type="submit" id="search_button_menu" class="search_button menu_mm">
+                    <img class="menu_mm"  th:href="@{/images/magnifying-glass.svg}" alt=""></button>
             </form>
         </div>
         <nav class="menu_nav">
             <ul class="menu_mm">
-                <li class="menu_mm"><a href="#">home</a></li>
-                <li class="menu_mm"><a href="#">clothes</a></li>
-                <li class="menu_mm"><a href="#">accessories</a></li>
-                <li class="menu_mm"><a href="#">lingerie</a></li>
-                <li class="menu_mm"><a href="#">contact</a></li>
+                <li><a th:href="@{/index}">home</a></li>
+                <li><a th:href="@{/index}">quem somos</a></li>
+                <li><a th:href="@{/cardapio}">cardápio</a></li>
+                <li id="cadastroPizzaB" style="display: none;"><a th:href="@{/cadastro_produto}">cadastrar pizza</a></li>
+                <li id="loginB"><a th:href="@{/login}">login</a></li>
+                <li><p th:text="${session.welcome_username}"></li>
+                <li id="sairLinkB" style="display: none;">
+                    <form action="/logof" method="post" name="logof">
+                        <button class="sair" type="submit">Sair</button>
+                    </form>
+                </li>
             </ul>
         </nav>
     </div>
@@ -191,7 +193,7 @@
             var linha = '<tr>';
                 linha += '<td class="coluna200">' + objPizzas[indice].nome + '</td>';
                 linha += '<td class="coluna300">' + objPizzas[indice].descricao + '</td>';
-                linha += '<td class="coluna100">' + objPizzas[indice].valor + '</td>';
+                linha += '<td class="coluna100">R$ ' + objPizzas[indice].valor + '</td>';
                 linha += '<td class="coluna200"><input id="pizza'+num+'" type="text" value="0" class="qtdField" name="'+objPizzas[indice].nome+'" data-id="'+objPizzas[indice].id+'"><button id="addPizza'+num+'" class="add btnPizzas product_fav product_option" type="button">+</button><button id="subPizza'+num+'" class="sub btnPizzas product_fav product_option" type="button">-</button></td>'
                 linha += '</tr>';
             tabela += linha;
@@ -212,6 +214,21 @@
         console.log(objPizzas);
 
         setTimeout(criaTabelaPizzas, 500);
+
+
+        var user = $('#user').val();
+        var role = $('#role').val();
+        if(user != ""){
+            $('#login').css("display", "none");
+            $('#loginB').css("display", "none");
+            if(role == 0){
+                $('#cadastroPizza').css("display", "inline-block");
+                $('#cadastroPizzaB').css("display", "inline-block");
+                $('#sairLink').css("display", "inline-block");
+                $('#sairLinkB').css("display", "inline-block");
+            }
+        }
+
 
     });
 
@@ -263,5 +280,5 @@
         <script th:href="@{/js/jquery.mCustomScrollbar.js}"></script>
         <script th:href="@{/js/jquery-ui.js}"></script>
         <script th:href="@{/js/categories_custom.js}"></script>
-</body>
+    </body>
 </html>

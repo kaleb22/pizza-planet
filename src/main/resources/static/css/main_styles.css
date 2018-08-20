@@ -897,6 +897,11 @@ section
 /*********************************
 7. New Arrivals
 *********************************/
+.sair
+{
+    border: none;
+    background: none;
+}
 
 .arrivals
 {

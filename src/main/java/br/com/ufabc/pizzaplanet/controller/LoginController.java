@@ -46,4 +46,20 @@ public class LoginController {
         }
         return mav;
     }
+
+    @RequestMapping(value = "/logof", method = RequestMethod.POST)
+    public ModelAndView logof(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = null;
+
+        try {
+            mav = new ModelAndView("index");
+
+            session.setAttribute("welcome_username", "");
+            session.setAttribute("role",  "");
+        } catch (Exception e) {
+
+            mav.addObject("logof_failed", "Não foi possivel sair!");
+        }
+        return mav;
+    }
 }
