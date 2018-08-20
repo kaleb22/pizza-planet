@@ -35,3 +35,10 @@ th {
     border: none;
     height: 30px;
 }
+
+.btnConfirmar {
+    border: none;
+    width: 150px;
+    margin-left: 67%;
+    margin-top: 50px;
+}
