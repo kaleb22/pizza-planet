@@ -6,11 +6,14 @@ import br.com.ufabc.pizzaplanet.model.dao.LoginDao;
 import br.com.ufabc.pizzaplanet.model.entity.Cliente;
 import br.com.ufabc.pizzaplanet.model.entity.Login;
 import br.com.ufabc.pizzaplanet.model.entity.Produto;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Base64;
@@ -78,5 +81,18 @@ public class CadastroController {
             mav.addObject("falha", "Erro ao cadastrar produto!");
         }
         return mav;
+    }
+
+    @RequestMapping(value = "/getPizzas", method = RequestMethod.GET, produces = "application/json")
+    @ResponseBody
+    public String getPizzasJson(){
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        String json = null;
+        try{
+            json = ow.writeValueAsString(cadastroProdutoDao.findAll());
+        } catch (Exception e){
+            System.out.println(e);
+        }
+        return json;
     }
 }

@@ -2,6 +2,8 @@ table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     margin: auto;
+    table-layout: fixed;
+    width: 800px;
 }
 
 td,
@@ -30,4 +32,6 @@ th {
 .btnPizzas {
     width: 20px;
     margin-left: 10px;
+    border: none;
+    height: 30px;
 }
