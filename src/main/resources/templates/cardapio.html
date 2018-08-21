@@ -36,6 +36,18 @@
                     <li id="cadastroPizza" style="display: none;"><a th:href="@{/cadastro_produto}">cadastrar pizza</a></li>
                     <li id="login"><a th:href="@{/login}">login</a></li>
                     <li>
+                        <a href="#">
+                            <div class="cart">
+                                <img th:src="@{/images/shopping-bag.svg}" alt="">
+                                <div class="cart_num_container">
+                                    <div class="cart_num_inner">
+                                        <div class="cart_num">0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li>
                         <p th:text="${session.welcome_username}">
                     </li>
                     <li id="sairLink" style="display: none;">
@@ -47,21 +59,6 @@
                     <input id="role" type="hidden" th:value="${session.role}">
                 </ul>
             </nav>
-            <div class="header_content ml-auto">
-                <div class="shopping">
-                    <!-- Cart -->
-                    <a href="#">
-                        <div class="cart">
-                            <img th:src="@{/images/shopping-bag.svg}" alt="">
-                            <div class="cart_num_container">
-                                <div class="cart_num_inner">
-                                    <div class="cart_num">0</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
 
             <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
                 <div></div>
