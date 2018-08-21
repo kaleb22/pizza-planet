@@ -235,10 +235,18 @@
     }
 
     function confirmaPedido() {
+
+        var data = [];
+        var pizzas = {};
+            pizzas ['pizzas'] = arrayPedidos;
+
+        data.push(pizzas);
+
+        console.log(JSON.stringify(data));
+
         $.ajax({ 
             headers: { 
                 'Accept': 'application/json',
-                'Content-Type': 'application/json' 
             },
             url:'/cadastraPedido',
             type:"POST", 
