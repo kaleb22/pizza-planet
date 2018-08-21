@@ -71,7 +71,7 @@ public class CadastroController {
             produto.setDescricao(descricao);
             produto.setValor(valor);
 
-            // salvando cliente
+            // salvando pizza
             cadastroProdutoDao.save(produto);
 
 
