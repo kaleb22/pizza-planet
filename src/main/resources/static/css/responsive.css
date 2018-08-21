@@ -5,7 +5,7 @@
 
 [Table of Contents]
 
-1. 1600px
+1. 1600px.main_nav
 2. 1440px
 3. 1280px
 4. 1199px
@@ -41,6 +41,7 @@
 {
 	.main_nav
 	{
+	    padding-top: 20px;
 		padding-left: 100px;
 	}
 	.shopping
@@ -71,6 +72,7 @@
 {
 	.main_nav
 	{
+	    padding-top: 20px;
 		padding-left: 60px;
 	}
 	.main_nav ul li

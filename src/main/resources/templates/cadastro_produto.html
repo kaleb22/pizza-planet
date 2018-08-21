@@ -31,10 +31,19 @@
                 <nav class="main_nav">
                     <ul>
                         <li><a th:href="@{/index}">home</a></li>
-                        <li><a href="#">cardápio</a></li>
-                        <li><a href="#">quem somos</a></li>
-                        <li><a th:href="@{/login}">login</a></li>
-                        <li><p th:text="${session.welcome_username}"></li>
+                        <li><a th:href="@{/cardapio}">cardápio</a></li>
+                        <li id="cadastroPizza" style="display: none;"><a th:href="@{/cadastro_produto}">cadastrar pizza</a></li>
+                        <li id="login"><a th:href="@{/login}">login</a></li>
+                        <li>
+                            <p th:text="${session.welcome_username}">
+                        </li>
+                        <li id="sairLink" style="display: none;">
+                            <form action="/logof" method="post" name="logof">
+                                <button class="sair" type="submit">Sair</button>
+                            </form>
+                        </li>
+                        <input id="user" type="hidden" th:value="${session.welcome_username}">
+                        <input id="role" type="hidden" th:value="${session.role}">
                     </ul>
                 </nav>
                 <div class="burger_container d-flex flex-column align-items-center justify-content-around menu_mm">
@@ -65,10 +74,15 @@
             <nav class="menu_nav">
                 <ul class="menu_mm">
                     <li><a th:href="@{/index}">home</a></li>
-                    <li><a href="#">cardápio</a></li>
-                    <li><a href="#">quem somos</a></li>
-                    <li><a th:href="@{/login}">login</a></li>
-                    <li><p th:text="${session.welcome_username}"></li></li>
+                    <li><a th:href="@{/cardapio}">cardápio</a></li>
+                    <li id="cadastroPizzaB" style="display: none;"><a th:href="@{/cadastro_produto}">cadastrar pizza</a></li>
+                    <li id="loginB"><a th:href="@{/login}">login</a></li>
+                    <li><p th:text="${session.welcome_username}"></li>
+                    <li id="sairLinkB" style="display: none;">
+                        <form action="/logof" method="post" name="logof">
+                            <button class="sair" type="submit">Sair</button>
+                        </form>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -175,7 +189,22 @@
 <script>
 
 $(document).ready(function(){
+
       $("input.dinheiro").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
+
+        var user = $('#user').val();
+        var role = $('#role').val();
+        if(user != ""){
+            $('#login').css("display", "none");
+            $('#loginB').css("display", "none");
+            if(role == 0){
+                $('#cadastroPizza').css("display", "inline-block");
+                $('#cadastroPizzaB').css("display", "inline-block");
+                $('#sairLink').css("display", "inline-block");
+                $('#sairLinkB').css("display", "inline-block");
+            }
+        }
+
 });
 
 

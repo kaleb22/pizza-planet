@@ -40,9 +40,27 @@ public class LoginController {
 
             session.setAttribute("welcome_username", "Olá, " + userInfo.getNome());
             session.setAttribute("role",  userLogin.getRole());
+            session.setAttribute("cpf", cpf);
         } catch (Exception e) {
             mav = new ModelAndView("login");
             mav.addObject("login_failed", "Usuário e/ou senha não encontrados!");
+        }
+        return mav;
+    }
+
+    @RequestMapping(value = "/logof", method = RequestMethod.POST)
+    public ModelAndView logof(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+        ModelAndView mav = null;
+
+        try {
+            mav = new ModelAndView("index");
+
+            session.setAttribute("welcome_username", "");
+            session.setAttribute("role",  "");
+            session.setAttribute("cpf",  "");
+        } catch (Exception e) {
+
+            mav.addObject("logof_failed", "Não foi possivel sair!");
         }
         return mav;
     }
