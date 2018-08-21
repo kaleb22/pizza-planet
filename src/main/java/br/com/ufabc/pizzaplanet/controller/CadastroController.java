@@ -48,7 +48,7 @@ public class CadastroController {
         Login login = new Login();
         login.setCPF(cpf);
         login.setSenha(senha64);
-        login.setRole(0);
+        login.setRole(1);
 
         // salvando cliente
         cadastroDao.save(cliente);
