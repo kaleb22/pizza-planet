@@ -219,7 +219,8 @@
                 linha += '<td class="coluna200">' + objPizzas[indice].nome + '</td>';
                 linha += '<td class="coluna300">' + objPizzas[indice].descricao + '</td>';
                 linha += '<td class="coluna100">R$ ' + objPizzas[indice].valor + '</td>';
-                linha += '<td class="coluna200"><input id="pizza'+num+'" type="text" value="0" class="qtdField" name="'+objPizzas[indice].nome+'" data-id="'+objPizzas[indice].id+'"><button id="addPizza'+num+'" class="add btnPizzas product_fav product_option" type="button">+</button><button id="subPizza'+num+'" class="sub btnPizzas product_fav product_option" type="button">-</button></td>'
+                linha += '<td class="coluna200"><input id="pizza'+num+'" type="text" value="0" class="qtdField" name="'+objPizzas[indice].nome+'" data-id="'+objPizzas[indice].id+'"><button id="addPizza'+num+'" class="add btnPizzas product_fav product_option" type="button">+</button><button id="subPizza'+num+'" class="sub btnPizzas product_fav product_option" type="button">-</button></td>';
+                linha += '<td class="coluna200"><button onClick="addItem()">add</button></td>';
                 linha += '</tr>';
             tabela += linha;
             tabela += '</table></div>';
@@ -232,6 +233,26 @@
         $(formEnvio).insertAfter('#product-grid');
         
 
+    }
+
+    function addItem(){
+        for(var i = 0; i < arrayPedidos.length; i++){
+            $.ajax({
+            headers: {
+                'Accept': 'application/json',
+            },
+            url:'/cadastraPedido',
+            type:"POST",
+            contentType: "",
+            data: JSON.stringify(arrayPedidos[i]), //Stringified Json Object
+            async: false,    //Cross-domain requests and dataType: "jsonp" requests do not support synchronous operation
+            cache: false,    //This will force requested pages not to be cached by the browser
+            processData:false, //To avoid making query String instead of JSON
+            success: function(resposeJsonObject){
+                alert("sucesso");
+            }
+        });
+        }
     }
 
     function confirmaPedido() {
@@ -256,7 +277,7 @@
             cache: false,    //This will force requested pages not to be cached by the browser  
             processData:false, //To avoid making query String instead of JSON
             success: function(resposeJsonObject){
-                // Success Action
+                alert("ola");
             }
         });
     }
