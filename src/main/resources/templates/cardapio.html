@@ -107,7 +107,7 @@
             <div class="row">
                 <div class="col-12">
 
-                    <div class="current_page">Woman's Fashion</div>
+
                 </div>
             </div>
 
@@ -242,13 +242,12 @@
 
         console.log(JSON.stringify(data));
 
-        $.ajax({ 
+        $.ajax({
             headers: { 
-                'Accept': 'application/json',
+                'Accept': 'application/json'
             },
             url:'/cadastraPedido',
-            type:"POST", 
-            contentType: "",
+            type:"POST",
             data: JSON.stringify(arrayPedidos), //Stringified Json Object
             async: false,    //Cross-domain requests and dataType: "jsonp" requests do not support synchronous operation
             cache: false,    //This will force requested pages not to be cached by the browser  
@@ -275,11 +274,11 @@
         if(user != ""){
             $('#login').css("display", "none");
             $('#loginB').css("display", "none");
+            $('#sairLink').css("display", "inline-block");
+            $('#sairLinkB').css("display", "inline-block");
             if(role == 0){
                 $('#cadastroPizza').css("display", "inline-block");
                 $('#cadastroPizzaB').css("display", "inline-block");
-                $('#sairLink').css("display", "inline-block");
-                $('#sairLinkB').css("display", "inline-block");
             }
         }
 

@@ -154,18 +154,18 @@
         })
 
         $(document).ready(function(){
-        var user = $('#user').val();
-        var role = $('#role').val();
-        if(user != ""){
-            $('#login').css("display", "none");
-            $('#loginB').css("display", "none");
-            if(role == 0){
-                $('#cadastroPizza').css("display", "inline-block");
-                $('#cadastroPizzaB').css("display", "inline-block");
+            var user = $('#user').val();
+            var role = $('#role').val();
+            if(user != ""){
+                $('#login').css("display", "none");
+                $('#loginB').css("display", "none");
                 $('#sairLink').css("display", "inline-block");
                 $('#sairLinkB').css("display", "inline-block");
+                if(role == 0){
+                    $('#cadastroPizza').css("display", "inline-block");
+                    $('#cadastroPizzaB').css("display", "inline-block");
+                }
             }
-        }
     });
     </script>
 
