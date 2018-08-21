@@ -40,6 +40,7 @@ public class LoginController {
 
             session.setAttribute("welcome_username", "Olá, " + userInfo.getNome());
             session.setAttribute("role",  userLogin.getRole());
+            session.setAttribute("cpf", cpf);
         } catch (Exception e) {
             mav = new ModelAndView("login");
             mav.addObject("login_failed", "Usuário e/ou senha não encontrados!");
@@ -56,6 +57,7 @@ public class LoginController {
 
             session.setAttribute("welcome_username", "");
             session.setAttribute("role",  "");
+            session.setAttribute("cpf",  "");
         } catch (Exception e) {
 
             mav.addObject("logof_failed", "Não foi possivel sair!");

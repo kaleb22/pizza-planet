@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" th:href="@{/css/bootstrap.min.css}">
     <link th:href="@{/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
+    <link rel="icon" th:href="@{/images/pizza_icon.png}">
     <link th:href="@{/css/jquery.mCustomScrollbar.css}" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" th:href="@{/css/jquery-ui.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/categories.css}">
@@ -126,6 +127,7 @@
 <script>
 
     var objPizzas = [];
+    var qtdPedidos = 0;
 
     pizza = new Object();
 	var nome;
@@ -155,7 +157,8 @@
                 return 9;
             } else {
                 qtd = parseInt(oldval, 10) + 1;
-                $('.cart_num').html(qtd.toString());
+                qtdPedidos++;
+                $('.cart_num').html(qtdPedidos.toString());
                 return qtd;
             }
         });
@@ -181,7 +184,8 @@
 					arrayPedidos.splice(index, 1);
 				}
                 qtd = parseInt(oldval, 10) - 1;
-                $('.cart_num').html(qtd.toString());
+                qtdPedidos--;
+                $('.cart_num').html(qtdPedidos.toString());
 				return qtd;
 			}
 		}); 
