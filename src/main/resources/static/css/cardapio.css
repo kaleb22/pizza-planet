@@ -38,7 +38,7 @@ th {
 
 .btnConfirmar {
     border: none;
-    width: 150px;
+    width: 150px !important;
     margin-left: 67%;
     margin-top: 50px;
 }
